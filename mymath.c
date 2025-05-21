@@ -1,4 +1,4 @@
-#include "math.h"
+#include "mymath.h"
 
 void add() {
 	int num1;
@@ -40,14 +40,35 @@ void div() {
 	scanf("%d", &num1);
 	puts("Enter number #2 (y in x / y = z)");
 	scanf("%d", &num2);
-	float res = num1 / num2;
-	fprintf(stdout, "%d / %d = %f\n", num1, num2, res);
+	float res = (float)num1 / num2;
+	fprintf(stdout, "%d / %d = %.3f\n", num1, num2, res);
 }
 
 void squarert() {
 	int num;
 	puts("Enter number (x in sqrt(x))");
 	scanf("%d", &num);
-	double res = sqrt(num);
-	fprintf(stdout, "sqrt(%d) = %f\n", num, res);
+	float res = sqrt(num);
+	fprintf(stdout, "sqrt(%d) = %.3f\n", num, res);
+}
+
+void trig() {
+	char buff[1];
+	puts("Select a trigonometric operation:\n(S)ine\n(C)osine\n(T)angent");
+	scanf("%s", &buff);
+	int num;
+	puts("Enter number in radians (x in sin(x))");
+	scanf("%d", &num);
+	if (strcmp(buff, "S") == 0) {
+		float res = sin(num);
+		fprintf(stdout, "sin(%d) = %.3frad\n", num, res);
+	} else if (strcmp(buff, "C") == 0) {
+		float res = cos(num);
+		fprintf(stdout, "cos(%d) = %.3frad\n", num, res);
+	} else if (strcmp(buff, "T") == 0) {
+		float res = tan(num);
+		fprintf(stdout, "tan(%d) = %.3frad\n", num, res);
+	} else {
+		puts("Unrecognized input buffer.");
+	}
 }
